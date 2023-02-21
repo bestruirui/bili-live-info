@@ -1,7 +1,15 @@
+html {
+  height: 100%;
+}
+
 body {
+  display: flex;
+  height: 100%;
   margin: 0;
-  padding: 10px;
+  padding: 0px 20px 0px 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #E5E5E5;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
 }

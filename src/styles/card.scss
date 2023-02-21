@@ -1,12 +1,17 @@
 .card {
+  width: 100%;
   display: inline-block;
   padding: 0;
-  background: #f5f5f5;
+  //background: #f5f5f5;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
 
   img {
+    border-radius: 10px;
     object-fit: cover;
+    width: 100%;
   }
 
   .card-content {
@@ -15,12 +20,15 @@
 
   .card-bottom {
     display: flex;
-    background: rgba(0, 0, 0, 0.05);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+   // background: rgba(0, 0, 0, 0.05);
+   // border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0.3rem 1rem;
 
     div {
       flex: 1;
+      //text-align: right;
+    }
+    .online {
       text-align: right;
     }
 

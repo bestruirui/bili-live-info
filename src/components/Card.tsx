@@ -17,27 +17,33 @@ const liveStatus = (status: number | string) => {
       return <><span className='status unknown'></span>未知</>;
   }
 };
+const image = (url: string | undefined) => {
+  if (!url) {
+    return undefined;
+  }
+  return <img src={url} alt={url} />;
+};
 
-const Card = ({ roomId, title, uname, cover, status, startTime, online}: CardData) => {
+const Card = ({ data }: { data: LiveInfo }) => {
   return (
     <div className='card'>
-      <img src={cover} alt='直播间封面' />
+      <div>{image(data.room_cover) ?? image(data.user_cover) ?? image(data.cover) ?? <span>没有封面图</span>}</div>
       <div className='card-content'>
-        <h2>{title}</h2>
-        <div>{uname}</div>
-        <div>
-          开播时间：
-          {!startTime || startTime?.toString() === '0000-00-00 00:00:00' ? (
-            <span>目前没有直播</span>
-          ) : (
-            startTime.toString()
-          )}
+        <h2>{data.title ?? ''}</h2>
+        <div> 
+          {data.uname ?? ''}
+         
         </div>
+        
       </div>
       <div className='card-bottom'>
-        <div className='card-status'>{liveStatus(status)}</div>
-        <div>房间号：<span>{roomId}</span></div>
-        <div>在线人数：{online}</div>
+        <div className='card-status'>{liveStatus(data.live_status)}</div>
+        {/* <div><span>{data.roomid?.toString() ?? ''}</span></div> */}
+        
+        <div className='fenqu'>
+          {data.area_v2_name?.toString() ?? ''}
+        </div>
+        <div className='online'>在线人数：{data.online?.toString() ?? ''}</div>
       </div>
     </div>
   );

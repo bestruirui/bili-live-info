@@ -46,8 +46,9 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <div className='input'>
+    <React.StrictMode>
+    {/*  <div> */}
+      {/* <div className='input'>
         <label htmlFor='roomId'>直播间号：</label>
         <input
           type={'number'}
@@ -58,16 +59,14 @@ const App = () => {
           onChange={(e) => setRoom(parseInt(e.target.value))}
         />
         <button onClick={changeRoom}>获取直播间信息</button>
-      </div>
+      </div> */}
+      
+      {liveInfo && <Card data={liveInfo} />}
 
-      <h1>卡片</h1>
-      {liveInfo && <SmallCard roomId={liveInfo.short_id?.toString() ?? liveInfo.roomid.toString()} title={liveInfo.title} uname={liveInfo.uname} cover={liveInfo.room_cover ?? liveInfo.user_cover ?? liveInfo.cover} status={parseInt(liveInfo.live_status.toString())} />}
-
-      {liveInfo && <Card roomId={liveInfo.short_id?.toString() ?? liveInfo.roomid.toString()} title={liveInfo.title} uname={liveInfo.uname} cover={liveInfo.room_cover ?? liveInfo.user_cover ?? liveInfo.cover} status={parseInt(liveInfo.live_status.toString())} startTime={liveInfo.live_time?.toString() === '0000-00-00 00:00:00' ? '目前没有直播' : liveInfo.live_time?.toString()} />}
-
-      <h1>表格</h1>
-      {liveInfo && <SimpleTable data={liveInfo} />}
-    </div>
+      {/* <h1>表格</h1>
+      {liveInfo && <SimpleTable data={liveInfo} />} */}
+    {/* </div> */}
+    </React.StrictMode>
   );
 };
 
