@@ -1,6 +1,7 @@
-import CardData from '../interface/CardData';
 import '../styles/card.scss';
 import LiveInfo from '../interface/LiveInfo';
+import moment from 'moment';
+import  {useState} from 'react'
 
 const liveStatus = (status: number | string) => {
   if (typeof status === 'string') {
@@ -17,6 +18,40 @@ const liveStatus = (status: number | string) => {
       return <><span className='status unknown'></span>未知</>;
   }
 };
+
+function Time (timestart: string) {
+  const [now, setNow] = useState(Number) 
+
+  const timelive = () => {
+    let timestartunix = moment(timestart);
+    let timenow =  moment().format('YYYY-MM-DD HH:mm:ss') ;
+    const live =(moment(timenow).diff(moment(timestartunix),'seconds' ));
+    setNow(live);
+  }
+  setInterval(timelive, 1000);
+
+  return (
+    <div >
+      直播时长:{Math.floor(now/3600) <= 9 ? "0" + Math.floor(now/3600) :Math.floor(now/3600)}小时{Math.floor((now/60)%60) <= 9 ? "0" + Math.floor((now/60)%60) : Math.floor((now/60)%60)}分钟{now%60 <= 9 ? "0" + now%60 : now%60}秒
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const image = (url: string | undefined) => {
   if (!url) {
     return undefined;
@@ -41,10 +76,13 @@ const Card = ({ data }: { data: LiveInfo }) => {
         {/* <div><span>{data.roomid?.toString() ?? ''}</span></div> */}
         
         <div className='fenqu'>
-          {data.area_v2_name?.toString() ?? ''}
+          {data.area_v2_name?.toString() ?? ''}分区
         </div>
         <div className='online'>在线人数：{data.online?.toString() ?? ''}</div>
+        
       </div>
+      {Time(data.live_time)}
+
     </div>
   );
 };

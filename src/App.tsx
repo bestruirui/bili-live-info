@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './styles/App.scss';
-import SmallCard from './components/SmallCard';
+//import SmallCard from './components/SmallCard';
 import Card from './components/Card';
-import SimpleTable from './components/SimpleTable';
+//import SimpleTable from './components/SimpleTable';
 import LiveInfo from './interface/LiveInfo';
 
 const setRoomId = (roomId: number | string, url: string) => {
@@ -31,7 +31,8 @@ const getInfo = async (roomId: number): Promise<LiveInfo | undefined> => {
 };
 
 const App = () => {
-  const [room, setRoom] = useState(27178028);
+ // const [room, setRoom] = useState(27178028);
+  const [room] = useState(27178028);
   const [liveInfo, setLiveInfo] = useState<LiveInfo>();
 
   const changeRoom = async () => {
@@ -62,10 +63,7 @@ const App = () => {
       </div> */}
       
       {liveInfo && <Card data={liveInfo} />}
-
-      {/* <h1>表格</h1>
-      {liveInfo && <SimpleTable data={liveInfo} />} */}
-    {/* </div> */}
+      
     </React.StrictMode>
   );
 };

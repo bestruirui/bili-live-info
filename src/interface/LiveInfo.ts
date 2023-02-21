@@ -10,7 +10,7 @@ interface LiveInfo {
   short_id?: string | number;
   online?: string | number;
   area_v2_name?: string;
-  live_time?: string;
+  live_time: string;
   first_live_time?: number;
   room_cover?: string;
   [key: string]: string | Number | undefined;
