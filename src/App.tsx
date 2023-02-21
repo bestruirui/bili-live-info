@@ -6,7 +6,7 @@ import SimpleTable from './components/SimpleTable';
 import LiveInfo from './interface/LiveInfo';
 
 const setRoomId = (roomId: number | string, url: string) => {
-  return url.replace(/\{ROOM_ID\}/g, roomId.toString() ?? '196');
+  return url.replace(/\{ROOM_ID\}/g, roomId.toString() ?? '27178028');
 };
 
 const getInfo = async (roomId: number): Promise<LiveInfo | undefined> => {
@@ -15,7 +15,7 @@ const getInfo = async (roomId: number): Promise<LiveInfo | undefined> => {
   }
   let url = setRoomId(roomId, process.env.REACT_APP_BILIBILI_LIVE_INFO_API);
   if (process.env.REACT_APP_USE_BACKEND?.toLowerCase() === 'true') {
-    url = setRoomId(roomId, `http://localhost:${process.env.REACT_APP_BACKEND_PORT}/?room={ROOM_ID}`);
+    url = setRoomId(roomId, `/api`);
   }
   const response = await fetch(url, {
     method: 'GET',
@@ -31,7 +31,7 @@ const getInfo = async (roomId: number): Promise<LiveInfo | undefined> => {
 };
 
 const App = () => {
-  const [room, setRoom] = useState(196);
+  const [room, setRoom] = useState(27178028);
   const [liveInfo, setLiveInfo] = useState<LiveInfo>();
 
   const changeRoom = async () => {

@@ -4,7 +4,8 @@ interface CardData {
     uname?: string,
     cover: string,
     status: number,
-    startTime?: string
+    startTime?: string,
+    online?:  number
   }
   
   export default CardData;

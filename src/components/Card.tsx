@@ -1,5 +1,6 @@
 import CardData from '../interface/CardData';
 import '../styles/card.scss';
+import LiveInfo from '../interface/LiveInfo';
 
 const liveStatus = (status: number | string) => {
   if (typeof status === 'string') {
@@ -17,7 +18,7 @@ const liveStatus = (status: number | string) => {
   }
 };
 
-const Card = ({ roomId, title, uname, cover, status, startTime }: CardData) => {
+const Card = ({ roomId, title, uname, cover, status, startTime, online}: CardData) => {
   return (
     <div className='card'>
       <img src={cover} alt='直播间封面' />
@@ -36,6 +37,7 @@ const Card = ({ roomId, title, uname, cover, status, startTime }: CardData) => {
       <div className='card-bottom'>
         <div className='card-status'>{liveStatus(status)}</div>
         <div>房间号：<span>{roomId}</span></div>
+        <div>在线人数：{online}</div>
       </div>
     </div>
   );

@@ -1,0 +1,16 @@
+{
+    "routes": [
+      {
+        "src": "/redirect",
+        "status": 308,
+        "headers": { "Location": "https://example.com/" }
+      },
+      {
+        "src": "/custom-page",
+        "headers": { "cache-control": "s-maxage=1000" },
+        "dest": "/index.html"
+      },
+      { "src": "/api", "dest": "https://api.live.bilibili.com/room/v1/Room/get_info_by_id?ids[]=27178028" }
+    ]
+  }
+  
