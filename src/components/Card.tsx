@@ -78,7 +78,7 @@ const Card = ({ data }: { data: LiveInfo }) => {
         <div className='fenqu'>
           {data.area_v2_name?.toString() ?? ''}分区
         </div>
-        <div className='online'>在线人数：{data.online?.toString() ?? ''}</div>
+        <div className='online'>人气值：{data.online?.toString() ?? ''}</div>
         
       </div>
       {Time(data.live_time)}
